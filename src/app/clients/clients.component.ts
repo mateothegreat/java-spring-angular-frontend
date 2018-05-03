@@ -13,7 +13,7 @@ export class ClientsComponent implements OnInit {
 
     @ViewChild(DataTableComponent) private datatableRef: DataTableComponent<Cake>;
 
-    private clients: Client[];
+    public clients: Client[];
 
     public crumbs: any[] = [{
 

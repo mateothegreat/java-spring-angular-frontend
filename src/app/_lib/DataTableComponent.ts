@@ -25,7 +25,6 @@ import {Numbers} from './Numbers';
             [offset]="page?.offset"
             [limit]="page?.limit"
 
-            [selected]="selected"
             [selectionType]="'single'"
 
             (activate)="onActivate($event)"

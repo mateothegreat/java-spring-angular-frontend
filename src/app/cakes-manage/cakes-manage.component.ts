@@ -13,7 +13,7 @@ import {ToastrService} from 'ngx-toastr';
 export class CakesManageComponent implements OnInit {
 
     private cakeId: number;
-    private cake: Cake;
+    public cake: Cake;
 
     public crumbs: any[] = [{
 
