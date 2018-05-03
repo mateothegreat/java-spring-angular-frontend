@@ -1,0 +1,6 @@
+<app-header-breadcrumbs title="CLIENTS" [crumbs]="crumbs"></app-header-breadcrumbs>
+
+<button class="btn btn-purple btn-block mg-b-10" (click)="onButtonCreateClick($event)">Create Client..</button>
+
+<data-table #datatable [rows]="clients"
+            [columns]="[ {name:'id'},{name:'name'},{name:'description'},{name:'status'}]"></data-table>

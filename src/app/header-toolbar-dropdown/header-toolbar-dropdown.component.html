@@ -1,0 +1,25 @@
+<li class="nav-item with-sub" routerLinkActive="active">
+
+    <a [routerLink]="[path]" class="nav-link" data-toggle="dropdown">
+
+        <i *ngIf="icon" class="icon fas {{ icon }}"></i>
+
+        <span>{{ title }}</span>
+
+    </a>
+
+    <div class="sub-item">
+
+        <ul>
+
+            <li *ngFor="let item of items">
+
+                <a [routerLink]="[item.path]">{{ item.title }}</a>
+
+            </li>
+
+        </ul>
+
+    </div>
+
+</li>

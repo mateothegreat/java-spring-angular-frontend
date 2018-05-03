@@ -1,0 +1,47 @@
+<app-header-breadcrumbs [title]="(cake?.id) ? 'Manage Cake': 'Create Cake'"
+                        [crumbs]="crumbs"></app-header-breadcrumbs>
+
+<table>
+
+    <form [formGroup]="formGroup">
+
+        <tr *ngIf="cake?.id">
+
+            <td>Id:</td>
+            <td>{{ cake?.id }}</td>
+
+        </tr>
+
+        <tr>
+
+            <td>Title:</td>
+            <td><input formControlName="title" class="form-control"></td>
+
+        </tr>
+
+        <tr>
+
+            <td>Description:</td>
+            <td><textarea formControlName="description" class="form-control"></textarea></td>
+
+        </tr>
+
+        <tr>
+
+            <td>Image URL:</td>
+            <td><input formControlName="image" class="form-control"></td>
+
+        </tr>
+
+        <div class="form-buttons">
+
+            <button *ngIf="cake?.id" class="btn btn-pink btn-block mg-b-10" (click)="onButtonDeleteClick($event)">Delete
+                Cake
+            </button>
+            <button class="btn btn-primary btn-block mg-b-10" (click)="onButtonSaveClick($event)">Save Changes</button>
+
+        </div>
+
+    </form>
+
+</table>

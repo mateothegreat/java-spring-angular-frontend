@@ -1,0 +1,6 @@
+<app-header-breadcrumbs title="Cakes" [crumbs]="crumbs"></app-header-breadcrumbs>
+
+<button class="btn btn-purple btn-block mg-b-10" (click)="onButtonCreateClick($event)">Create Cake..</button>
+
+<data-table #datatable [rows]="cakes"
+            [columns]="[ {name:'id'},{name:'title'},{name:'description'},{name:'image'}]"></data-table>

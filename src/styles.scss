@@ -1,0 +1,12 @@
+//@import 'library';
+//@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import 'app/shared/scss/slim.scss';
+@import '~@swimlane/ngx-datatable/release/index.css';
+@import '~@swimlane/ngx-datatable/release/themes/material.css';
+@import '~@swimlane/ngx-datatable/release/assets/icons.css';
+@import "~ngx-toastr/toastr.css";
+
+body {
+    padding: 0;
+    margin: 0;
+}
