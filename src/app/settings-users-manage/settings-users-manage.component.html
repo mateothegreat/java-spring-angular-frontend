@@ -1,44 +1,66 @@
 <app-header-breadcrumbs [title]="(user?.id) ? 'Manage User': 'Create User'"
                         [crumbs]="crumbs"></app-header-breadcrumbs>
 
-<table>
+<form [formGroup]="formGroup">
 
-    <form [formGroup]="formGroup">
+    <table>
 
-        <table>
+        <tr *ngIf="user?.id">
 
-            <tr *ngIf="user?.id">
+            <td>Id:</td>
+            <td>{{ user?.id }}</td>
 
-                <td>Id:</td>
-                <td>{{ user?.id }}</td>
+        </tr>
 
-            </tr>
+        <tr>
 
-            <tr>
+            <td>Username:</td>
 
-                <td>Username:</td>
-                <td><input formControlName="username" class="form-control"></td>
+            <td><input [attr.disabled]="disableInputs"
+                       formControlName="username"
+                       [(ngModel)]="user.username"
+                       class="form-control"></td>
 
-            </tr>
+        </tr>
 
-            <tr>
+        <tr>
 
-                <td>Password:</td>
-                <td><input formControlName="password" class="form-control"></td>
+            <td>Password:</td>
 
-            </tr>
+            <td><input [attr.disabled]="disableInputs"
+                       formControlName="password"
+                       [(ngModel)]="user.password"
+                       class="form-control"></td>
 
-        </table>
+        </tr>
 
-        <div class="form-buttons">
+        <tr>
 
-            <button *ngIf="user?.id" class="btn btn-pink btn-block mg-b-10" (click)="onButtonDeleteClick()">Delete
-                User
-            </button>
-            <button class="btn btn-primary btn-block mg-b-10" (click)="onButtonSaveClick()">Save Changes</button>
+            <td>Account Status:</td>
 
-        </div>
+            <td>
+                <select formControlName="status" [(ngModel)]="user.status">
 
-    </form>
+                    <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
 
-</table>
+                </select>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+    <div class="form-buttons">
+
+        <button *ngIf="user?.id" class="btn btn-pink btn-block mg-b-10" (click)="onButtonDeleteClick()">
+            Delete User
+        </button>
+
+        <button class="btn btn-primary btn-block mg-b-10" (click)="onButtonSaveClick()">
+            Save Changes
+        </button>
+
+    </div>
+
+</form>

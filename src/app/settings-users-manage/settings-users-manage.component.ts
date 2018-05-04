@@ -12,8 +12,6 @@ import {UsersService} from '../settings-users/UsersService';
 })
 export class SettingsUsersManageComponent {
 
-    public user: User;
-
     public crumbs: any[] = [{
 
         path: '/dashboard',
@@ -26,15 +24,20 @@ export class SettingsUsersManageComponent {
 
     }, {
 
-        path: '/users',
+        path: '/settings/users',
         title: 'Users'
 
     }];
 
+    public user: User = new User();
+    public disableInputs: boolean;
+    public statuses: string[] = ['Active', 'Disabled'];
+
     public formGroup: FormGroup = new FormGroup({
 
-        username: new FormControl('', Validators.required),
-        password: new FormControl('', Validators.required),
+        username: new FormControl(Validators.required),
+        password: new FormControl(Validators.required),
+        status: new FormControl('Active')
 
     }, {updateOn: 'blur'});
 
@@ -51,8 +54,11 @@ export class SettingsUsersManageComponent {
 
                     this.user = user;
 
-                    this.formGroup.controls['username'].setValue(user.username);
-                    this.formGroup.controls['password'].setValue(user.password);
+                    if (this.user.username === 'admin') {
+
+                        this.disableInputs = true;
+
+                    }
 
                 });
 
@@ -64,13 +70,21 @@ export class SettingsUsersManageComponent {
 
     public onButtonDeleteClick(): void {
 
-        this.usersService.deleteById(this.user.id).subscribe(() => {
+        if (this.user.username === 'admin') {
 
-            this.toastr.success(`The user "${this.user.username}" has been deleted!`);
+            this.toastr.warning('You cannot delete the admin account.');
 
-            this.router.navigate(['/settings/users']);
+        } else {
 
-        });
+            this.usersService.deleteById(this.user.id).subscribe(() => {
+
+                this.toastr.success(`The user "${this.user.username}" has been deleted!`);
+
+                this.router.navigate(['/settings/users']);
+
+            });
+
+        }
 
     }
 

@@ -15,8 +15,8 @@ export class SessionLoginComponent {
 
     public formGroup: FormGroup = new FormGroup({
 
-        username: new FormControl('demo', Validators.required),
-        password: new FormControl('demo', Validators.required),
+        username: new FormControl('admin', Validators.required),
+        password: new FormControl('admin', Validators.required),
 
     }, {updateOn: 'blur'});
 
