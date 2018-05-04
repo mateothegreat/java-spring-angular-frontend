@@ -15,7 +15,11 @@
         <tr>
 
             <td>Title:</td>
-            <td><input formControlName="title" class="form-control" [(ngModel)]="cake.title"></td>
+            <td><input formControlName="title"
+                       class="form-control"
+                       [(ngModel)]="cake.title"
+                       [ngClass]="{ 'parsley-error': formGroup.controls['title'].invalid }">
+            </td>
 
         </tr>
 
@@ -33,7 +37,11 @@
             <td>Image URL:</td>
             <td>
 
-                <input formControlName="image" class="form-control" style="width: 300px;" [(ngModel)]="cake.image">
+                <input formControlName="image"
+                       class="form-control"
+                       style="width: 300px;"
+                       [(ngModel)]="cake.image"
+                       [ngClass]="{ 'parsley-error': formGroup.controls['image'].invalid }">
 
                 <p *ngIf="cake.image" style="margin-top: 15px;">
 
@@ -57,8 +65,12 @@
             Delete Cake
         </button>
 
-        <button class="btn btn-primary btn-block mg-b-10" (click)="onButtonSaveClick()">
+        <button class="btn btn-primary btn-block mg-b-10"
+                [disabled]="formGroup.invalid"
+                (click)="onButtonSaveClick()">
+
             Save Changes
+
         </button>
 
     </div>

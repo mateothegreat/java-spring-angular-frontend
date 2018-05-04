@@ -30,9 +30,12 @@ export class CakesManageComponent {
 
         title: new FormControl('', Validators.required),
         description: new FormControl(),
-        image: new FormControl()
+        image: new FormControl('', [
+            Validators.required,
+            Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/gm)
+        ])
 
-    }, {updateOn: 'blur'});
+    },);
 
     public constructor(private router: Router,
                        private route: ActivatedRoute,
