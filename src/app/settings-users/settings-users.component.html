@@ -1,1 +1,6 @@
 <app-header-breadcrumbs title="Manage Users" [crumbs]="crumbs"></app-header-breadcrumbs>
+
+<button class="btn btn-purple btn-block mg-b-10" (click)="onButtonCreateClick($event)">Create User..</button>
+
+<data-table #datatable [rows]="users"
+            [columns]="[ {name:'id'},{name:'username'},{name:'password'}]"></data-table>

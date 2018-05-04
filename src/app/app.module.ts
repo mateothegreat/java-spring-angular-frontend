@@ -27,8 +27,14 @@ import {ClientsComponent} from './clients/clients.component';
 import {ClientsManageComponent} from './clients-manage/clients-manage.component';
 import {SettingsUsersComponent} from './settings-users/settings-users.component';
 import {SettingsUsersManageComponent} from './settings-users-manage/settings-users-manage.component';
+import {UsersService} from './settings-users/UsersService';
+import {AuthGuard} from './_lib/AuthGuard';
+import {SessionService} from './_lib/SessionService';
+import {SessionLoginComponent} from './session-login/session-login.component';
+import {SessionLogoutComponent} from './session-logout/session-logout.component';
 
 @NgModule({
+
     declarations: [
 
         AppComponent,
@@ -48,11 +54,14 @@ import {SettingsUsersManageComponent} from './settings-users-manage/settings-use
         ClientsComponent,
         ClientsManageComponent,
         SettingsUsersComponent,
-        SettingsUsersManageComponent
+        SettingsUsersManageComponent,
+        SessionLoginComponent,
+        SessionLogoutComponent,
 
     ],
     imports: [
 
+        HttpClientModule,
         BrowserModule,
         BrowserAnimationsModule,
         SharedModule,
@@ -68,63 +77,96 @@ import {SettingsUsersManageComponent} from './settings-users-manage/settings-use
             enableHtml: true,
             closeButton: true
         }),
-        RouterModule.forRoot([{
+        RouterModule.forRoot([
 
-            path: 'dashboard',
-            component: DashboardComponent
+            {
 
-        }, {
+                path: 'login',
+                component: SessionLoginComponent
 
-            path: 'clients',
-            component: ClientsComponent
+            }, {
+                path: 'logout',
+                component: SessionLogoutComponent,
+                canActivate: [AuthGuard]
 
-        }, {
+            }, {
+                path: 'dashboard',
+                component: DashboardComponent,
+                canActivate: [AuthGuard]
 
-            path: 'clients/create',
-            component: ClientsManageComponent
+            }, {
 
-        }, {
+                path: 'clients',
+                component: ClientsComponent,
+                canActivate: [AuthGuard]
 
-            path: 'clients/:clientId',
-            component: ClientsManageComponent
+            }, {
 
-        }, {
+                path: 'clients/create',
+                component: ClientsManageComponent,
+                canActivate: [AuthGuard]
 
-            path: 'cakes',
-            component: CakesComponent
+            }, {
 
-        }, {
+                path: 'clients/:clientId',
+                component: ClientsManageComponent,
+                canActivate: [AuthGuard]
 
-            path: 'cakes/create',
-            component: CakesManageComponent
+            }, {
 
-        }, {
+                path: 'cakes',
+                component: CakesComponent,
+                canActivate: [AuthGuard]
 
-            path: 'cakes/:cakeId',
-            component: CakesManageComponent
+            }, {
 
-        }, {
+                path: 'cakes/create',
+                component: CakesManageComponent,
+                canActivate: [AuthGuard]
 
-            path: 'settings',
-            component: SettingsComponent
+            }, {
 
-        }, {
+                path: 'cakes/:cakeId',
+                component: CakesManageComponent,
+                canActivate: [AuthGuard]
 
-            path: 'settings/users',
-            component: SettingsUsersComponent
+            }, {
 
-        }, {
+                path: 'settings',
+                component: SettingsComponent,
+                canActivate: [AuthGuard]
 
-            path: 'settings/users/:userId',
-            component: SettingsUsersComponent
+            }, {
 
-        }, {
+                path: 'settings/users',
+                component: SettingsUsersComponent,
+                canActivate: [AuthGuard]
 
-            path: '',
-            pathMatch: 'full',
-            redirectTo: '/dashboard'
+            }, {
 
-        }])
+                path: 'settings/users/create',
+                component: SettingsUsersManageComponent,
+                canActivate: [AuthGuard]
+
+            }, {
+
+                path: 'settings/users/:userId',
+                component: SettingsUsersManageComponent,
+                canActivate: [AuthGuard]
+
+            }, {
+
+                path: '',
+                pathMatch: 'full',
+                redirectTo: '/dashboard'
+
+            }
+
+        ], {
+
+            onSameUrlNavigation: 'reload'
+
+        })
 
     ],
     providers: [
@@ -133,7 +175,10 @@ import {SettingsUsersManageComponent} from './settings-users-manage/settings-use
             useClass: NgProgressInterceptor,
             multi: true
         },
-        CakesService
+        AuthGuard,
+        SessionService,
+        CakesService,
+        UsersService
     ],
     bootstrap: [
         AppComponent

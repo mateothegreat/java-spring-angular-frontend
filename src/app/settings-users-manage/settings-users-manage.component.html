@@ -1,3 +1,44 @@
-<p>
-  settings-users-manage works!
-</p>
+<app-header-breadcrumbs [title]="(user?.id) ? 'Manage User': 'Create User'"
+                        [crumbs]="crumbs"></app-header-breadcrumbs>
+
+<table>
+
+    <form [formGroup]="formGroup">
+
+        <table>
+
+            <tr *ngIf="user?.id">
+
+                <td>Id:</td>
+                <td>{{ user?.id }}</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Username:</td>
+                <td><input formControlName="username" class="form-control"></td>
+
+            </tr>
+
+            <tr>
+
+                <td>Password:</td>
+                <td><input formControlName="password" class="form-control"></td>
+
+            </tr>
+
+        </table>
+
+        <div class="form-buttons">
+
+            <button *ngIf="user?.id" class="btn btn-pink btn-block mg-b-10" (click)="onButtonDeleteClick()">Delete
+                User
+            </button>
+            <button class="btn btn-primary btn-block mg-b-10" (click)="onButtonSaveClick()">Save Changes</button>
+
+        </div>
+
+    </form>
+
+</table>

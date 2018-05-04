@@ -12,7 +12,6 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class CakesManageComponent implements OnInit {
 
-    private cakeId: number;
     public cake: Cake;
 
     public crumbs: any[] = [{
@@ -37,8 +36,8 @@ export class CakesManageComponent implements OnInit {
 
     public constructor(private router: Router,
                        private route: ActivatedRoute,
-                       private cakesService: CakesService,
-                       private toastr: ToastrService) {
+                       private toastr: ToastrService,
+                       private cakesService: CakesService) {
 
         this.route.params.subscribe((params) => {
 

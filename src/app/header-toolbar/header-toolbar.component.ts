@@ -12,6 +12,11 @@ export class HeaderToolbarComponent implements OnInit {
         title: 'Manage Users',
         path: '/settings/users'
 
+    }, {
+
+        title: 'Logout',
+        path: '/logout'
+
     }];
 
     public constructor() {

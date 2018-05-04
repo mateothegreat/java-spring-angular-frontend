@@ -1,4 +1,4 @@
-<div class="slim-header">
+<div *ngIf="sessionService.user" class="slim-header">
 
     <div class="container">
 
@@ -11,20 +11,29 @@
             </h2>
 
             <div class="search-box">
+
                 <input type="text" class="form-control" placeholder="Search">
+
                 <button class="btn btn-primary">
+
                     <i class="fa fa-search"></i>
+
                 </button>
+
             </div>
-            <!-- search-box -->
+
         </div>
-        <!-- slim-header-left -->
-        <div class="slim-header-right">
+
+        <div *ngIf="sessionService.user" class="slim-header-right">
+
             <div class="dropdown dropdown-a">
+
                 <a href="" class="header-notification" data-toggle="dropdown">
                     <i class="icon ion-ios-bolt-outline"></i>
                 </a>
+
                 <div class="dropdown-menu">
+
                     <div class="dropdown-menu-header">
                         <h6 class="dropdown-menu-title">Activity Logs</h6>
                         <div>
@@ -32,6 +41,7 @@
                             <a href="">Settings</a>
                         </div>
                     </div>
+
                     <!-- dropdown-menu-header -->
                     <div class="dropdown-activity-list">
                         <div class="activity-label">Today, December 13, 2017</div>
@@ -212,7 +222,7 @@
 </div>
 <!-- slim-header -->
 
-<app-header-toolbar></app-header-toolbar>
+<app-header-toolbar *ngIf="sessionService.user"></app-header-toolbar>
 
 <div class="slim-mainpanel">
 
@@ -224,7 +234,7 @@
 
 </div>
 
-<app-footer></app-footer>
+<app-footer *ngIf="sessionService.user"></app-footer>
 
 <ng-progress [color]="'blue'" [thick]="true"></ng-progress>
 <div toastContainer></div>

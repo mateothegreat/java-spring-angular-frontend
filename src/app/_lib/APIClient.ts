@@ -1,10 +1,8 @@
 import {Observable} from 'rxjs/Observable';
 import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
 import {PageRequest} from './PageRequest';
 
-@Injectable()
-export class APIClient {
+export class APIClient<T> {
 
     public static readonly BASE_URL: string = 'https://angular-spring-backend.herokuapp.com';
 

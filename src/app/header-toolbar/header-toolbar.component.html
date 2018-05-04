@@ -4,18 +4,25 @@
 
         <ul class="nav">
 
-            <app-header-toolbar-item title="Dashboard" path="/dashboard" icon="fa-columns"></app-header-toolbar-item>
-            <app-header-toolbar-item title="Clients" path="/clients" icon="fa-address-book"></app-header-toolbar-item>
-            <app-header-toolbar-item title="Cakes" path="/cakes" icon="fa-birthday-cake"></app-header-toolbar-item>
+            <app-header-toolbar-item title="Dashboard"
+                                     path="/app/dashboard"
+                                     icon="fa-columns"></app-header-toolbar-item>
+
+            <app-header-toolbar-item title="Clients"
+                                     path="/app/clients"
+                                     icon="fa-address-book"></app-header-toolbar-item>
+
+            <app-header-toolbar-item title="Cakes"
+                                     path="/app/cakes"
+                                     icon="fa-birthday-cake"></app-header-toolbar-item>
 
             <app-header-toolbar-dropdown title="Settings"
-                                         path="/settings"
+                                         path="/app/settings"
                                          icon="fa-code"
                                          [items]="settingsItems"></app-header-toolbar-dropdown>
 
         </ul>
 
-
     </div>
-    <!-- container -->
+
 </div>
