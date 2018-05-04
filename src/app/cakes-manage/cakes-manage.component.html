@@ -1,7 +1,8 @@
-<app-header-breadcrumbs [title]="(cake?.id) ? 'Manage Cake': 'Create Cake'"
+<app-header-breadcrumbs *ngIf="cake?.id || creating"
+                        [title]="(cake?.id) ? 'Manage Cake': 'Create Cake'"
                         [crumbs]="crumbs"></app-header-breadcrumbs>
 
-<form [formGroup]="formGroup">
+<form [formGroup]="formGroup" *ngIf="cake?.id || creating">
 
     <table>
 

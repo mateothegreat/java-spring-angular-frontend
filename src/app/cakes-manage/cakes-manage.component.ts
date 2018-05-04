@@ -13,6 +13,7 @@ import {ToastrService} from 'ngx-toastr';
 export class CakesManageComponent {
 
     public cake: Cake = new Cake();
+    public creating: boolean;
 
     public crumbs: any[] = [{
 
@@ -35,7 +36,7 @@ export class CakesManageComponent {
             Validators.pattern(/^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/gm)
         ])
 
-    },);
+    });
 
     public constructor(private router: Router,
                        private route: ActivatedRoute,
@@ -51,6 +52,10 @@ export class CakesManageComponent {
                     this.cake = cake;
 
                 });
+
+            } else {
+
+                this.creating = true;
 
             }
 
