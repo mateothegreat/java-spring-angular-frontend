@@ -32,6 +32,7 @@ export class SettingsUsersManageComponent {
     public user: User = new User();
     public disableInputs: boolean;
     public statuses: string[] = ['Active', 'Disabled'];
+    public creating: boolean;
 
     public formGroup: FormGroup = new FormGroup({
 
@@ -61,6 +62,10 @@ export class SettingsUsersManageComponent {
                     }
 
                 });
+
+            } else {
+
+                this.creating = true;
 
             }
 

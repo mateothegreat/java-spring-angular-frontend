@@ -1,11 +1,12 @@
-<app-header-breadcrumbs [title]="(user?.id) ? 'Manage User': 'Create User'"
+<app-header-breadcrumbs *ngIf="creating || user?.id"
+                        [title]="(user?.id) ? 'Manage User': 'Create User'"
                         [crumbs]="crumbs"></app-header-breadcrumbs>
 
-<form [formGroup]="formGroup">
+<form *ngIf="creating || user?.id" [formGroup]="formGroup">
 
     <table>
 
-        <tr *ngIf="user?.id">
+        <tr *ngIf="!creating && user?.id">
 
             <td>Id:</td>
             <td>{{ user?.id }}</td>
@@ -39,7 +40,7 @@
             <td>Account Status:</td>
 
             <td>
-                <select formControlName="status" [(ngModel)]="user.status">
+                <select formControlName="status" class="form-control" [(ngModel)]="user.status">
 
                     <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
 
