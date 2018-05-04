@@ -6,7 +6,7 @@ import {PageRequest} from './PageRequest';
 @Injectable()
 export class APIClient {
 
-    public static readonly BASE_URL: string = 'http://localhost:3000';
+    public static readonly BASE_URL: string = 'https://angular-spring-backend.herokuapp.com';
 
     public constructor(private httpClient: HttpClient) {
 

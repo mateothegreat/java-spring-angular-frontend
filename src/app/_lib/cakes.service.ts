@@ -6,7 +6,7 @@ import {HttpClient} from '@angular/common/http';
 @Injectable()
 export class CakesService {
 
-    public static readonly BASE_URL: string = 'http://localhost:8081';
+    public static readonly BASE_URL: string = 'https://angular-spring-backend.herokuapp.com';
 
     public constructor(private httpClient: HttpClient) {
 
