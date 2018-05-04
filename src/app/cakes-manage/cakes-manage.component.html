@@ -37,7 +37,11 @@
 
                 <p *ngIf="cake.image" style="margin-top: 15px;">
 
-                    <img src="{{ cake.image }}" style="max-width: 500px">
+                    <a href="{{ cake.image }}" target="_blank">
+
+                        <img src="{{ cake.image }}" style="max-width: 500px">
+
+                    </a>
 
                 </p>
 
@@ -49,10 +53,13 @@
 
     <div class="form-buttons">
 
-        <button *ngIf="cake?.id" class="btn btn-pink btn-block mg-b-10" (click)="onButtonDeleteClick()">Delete
-            Cake
+        <button *ngIf="cake?.id" class="btn btn-pink btn-block mg-b-10" (click)="onButtonDeleteClick()">
+            Delete Cake
         </button>
-        <button class="btn btn-primary btn-block mg-b-10" (click)="onButtonSaveClick()">Save Changes</button>
+
+        <button class="btn btn-primary btn-block mg-b-10" (click)="onButtonSaveClick()">
+            Save Changes
+        </button>
 
     </div>
 

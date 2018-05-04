@@ -12,7 +12,7 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class CakesManageComponent {
 
-    public cake: Cake;
+    public cake: Cake = new Cake();
 
     public crumbs: any[] = [{
 
