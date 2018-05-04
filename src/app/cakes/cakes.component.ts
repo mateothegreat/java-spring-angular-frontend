@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {CakesService} from '../_lib/cakes.service';
 import {Cake} from '../_lib/Cake';
 import {DataTableComponent} from '../_lib/DataTableComponent';
@@ -12,6 +12,7 @@ import {PageRequest} from '../_lib/PageRequest';
 })
 export class CakesComponent implements OnInit {
 
+    @ViewChild('imageTemplate') public imageTemplate: TemplateRef<any>;
     @ViewChild(DataTableComponent) private datatableRef: DataTableComponent<Cake>;
 
     public cakes: Cake[];

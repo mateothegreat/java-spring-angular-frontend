@@ -18,7 +18,6 @@ import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {CakesService} from './_lib/cakes.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {CakesManageComponent} from './cakes-manage/cakes-manage.component';
-import {CakesCreateComponent} from './cakes-create/cakes-create.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HeaderToolbarDropdownComponent} from './header-toolbar-dropdown/header-toolbar-dropdown.component';
 import {ToastrModule} from 'ngx-toastr';
@@ -49,7 +48,6 @@ import {SessionLogoutComponent} from './session-logout/session-logout.component'
         SettingsComponent,
         CakesComponent,
         CakesManageComponent,
-        CakesCreateComponent,
         HeaderToolbarDropdownComponent,
         ClientsComponent,
         ClientsManageComponent,

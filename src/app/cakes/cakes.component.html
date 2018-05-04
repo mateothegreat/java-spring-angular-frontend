@@ -3,4 +3,11 @@
 <button class="btn btn-purple btn-block mg-b-10" (click)="onButtonCreateClick($event)">Create Cake..</button>
 
 <data-table #datatable [rows]="cakes"
-            [columns]="[ {name:'id'},{name:'title'},{name:'description'},{name:'image'}]"></data-table>
+            [columns]="[ {name:'id'},{name:'title'},{name:'description'},{name:'image', cellTemplate: imageTemplate}]"></data-table>
+
+
+<ng-template #imageTemplate let-column="column" let-row="row" let-value="value">
+
+    <img src="{{ value }}" style="height: 100px">
+
+</ng-template>

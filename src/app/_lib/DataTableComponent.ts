@@ -46,7 +46,7 @@ export class DataTableComponent<T> {
     private _stream: BehaviorSubject<{}> = new BehaviorSubject<{}>({});
     public stream$: Observable<{}> = this._stream.asObservable();
 
-    private _clicks: BehaviorSubject<T> = new BehaviorSubject<T>(<T>{});
+    private _clicks: BehaviorSubject<T> = new BehaviorSubject<T>({} as T);
     public clicks$: Observable<T> = this._clicks.asObservable();
 
     public onPageClick($event): void {

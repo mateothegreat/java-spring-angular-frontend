@@ -1,9 +1,9 @@
 <app-header-breadcrumbs [title]="(cake?.id) ? 'Manage Cake': 'Create Cake'"
                         [crumbs]="crumbs"></app-header-breadcrumbs>
 
-<table>
+<form [formGroup]="formGroup">
 
-    <form [formGroup]="formGroup">
+    <table>
 
         <tr *ngIf="cake?.id">
 
@@ -15,33 +15,45 @@
         <tr>
 
             <td>Title:</td>
-            <td><input formControlName="title" class="form-control"></td>
+            <td><input formControlName="title" class="form-control" [(ngModel)]="cake.title"></td>
 
         </tr>
 
         <tr>
 
             <td>Description:</td>
-            <td><textarea formControlName="description" class="form-control"></textarea></td>
+            <td>
+                <textarea formControlName="description" class="form-control" [(ngModel)]="cake.description"></textarea>
+            </td>
 
         </tr>
 
         <tr>
 
             <td>Image URL:</td>
-            <td><input formControlName="image" class="form-control"></td>
+            <td>
+
+                <input formControlName="image" class="form-control" style="width: 300px;" [(ngModel)]="cake.image">
+
+                <p *ngIf="cake.image" style="margin-top: 15px;">
+
+                    <img src="{{ cake.image }}" style="max-width: 500px">
+
+                </p>
+
+            </td>
 
         </tr>
 
-        <div class="form-buttons">
+    </table>
 
-            <button *ngIf="cake?.id" class="btn btn-pink btn-block mg-b-10" (click)="onButtonDeleteClick($event)">Delete
-                Cake
-            </button>
-            <button class="btn btn-primary btn-block mg-b-10" (click)="onButtonSaveClick($event)">Save Changes</button>
+    <div class="form-buttons">
 
-        </div>
+        <button *ngIf="cake?.id" class="btn btn-pink btn-block mg-b-10" (click)="onButtonDeleteClick()">Delete
+            Cake
+        </button>
+        <button class="btn btn-primary btn-block mg-b-10" (click)="onButtonSaveClick()">Save Changes</button>
 
-    </form>
+    </div>
 
-</table>
+</form>

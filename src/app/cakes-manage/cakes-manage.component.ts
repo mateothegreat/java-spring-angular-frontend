@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {CakesService} from '../_lib/cakes.service';
 import {Cake} from '../_lib/Cake';
@@ -10,7 +10,7 @@ import {ToastrService} from 'ngx-toastr';
     templateUrl: './cakes-manage.component.html',
     styleUrls: ['./cakes-manage.component.scss']
 })
-export class CakesManageComponent implements OnInit {
+export class CakesManageComponent {
 
     public cake: Cake;
 
@@ -47,10 +47,6 @@ export class CakesManageComponent implements OnInit {
 
                     this.cake = cake;
 
-                    this.formGroup.controls['title'].setValue(cake.title);
-                    this.formGroup.controls['description'].setValue(cake.description);
-                    this.formGroup.controls['image'].setValue(cake.image);
-
                 });
 
             }
@@ -59,10 +55,7 @@ export class CakesManageComponent implements OnInit {
 
     }
 
-    public ngOnInit() {
-    }
-
-    public onButtonDeleteClick(e: any): void {
+    public onButtonDeleteClick(): void {
 
         this.cakesService.deleteById(this.cake.id).subscribe(() => {
 
@@ -74,13 +67,15 @@ export class CakesManageComponent implements OnInit {
 
     }
 
-    public onButtonSaveClick(e: any): void {
+    public onButtonSaveClick(): void {
 
         if (this.cake && this.cake.id) {
 
             this.cakesService.updateById(this.cake.id, this.formGroup.value).subscribe((e: any) => {
 
                 this.toastr.success(`Your changes have been saved!'`);
+
+                // this.router.navigate([`/cakes/${this.cake.id}`]);
 
             });
 
