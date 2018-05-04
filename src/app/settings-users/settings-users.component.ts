@@ -28,7 +28,7 @@ export class SettingsUsersComponent implements OnInit {
 
     }, {
 
-        path: '/users',
+        path: '/settings/users',
         title: 'Users'
 
     }];
