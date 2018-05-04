@@ -1,9 +1,9 @@
 import {Component, Input} from '@angular/core';
 import {Page} from './Page';
 import {PageRequest} from './PageRequest';
-import {Observable} from 'rxjs/Observable';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Numbers} from './Numbers';
+import {BehaviorSubject} from 'rxjs';
+import {Observable} from 'rxjs';
 
 @Component({
     selector: 'data-table',
