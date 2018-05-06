@@ -1,5 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Component, Input} from '@angular/core';
 
 @Component({
     selector: 'app-header-breadcrumbs',
@@ -26,30 +25,9 @@ import {ActivatedRoute, Router} from '@angular/router';
     `,
     styles: []
 })
-export class HeaderBreadcrumbsComponent implements OnInit {
+export class HeaderBreadcrumbsComponent {
 
     @Input() public title: string;
     @Input() public crumbs: any[];
-
-    public constructor(private router: Router,
-                       private route: ActivatedRoute) {
-
-        this.router.events.subscribe((e) => {
-
-            // console.log(e);
-
-        });
-
-        this.route.params.subscribe((params) => {
-
-            console.log(params);
-            console.log(this.router.url);
-
-        });
-
-    }
-
-    public ngOnInit() {
-    }
 
 }

@@ -28,5 +28,38 @@ body {
 table td {
 
     padding: 10px;
-    
+
 }
+
+.flex-wrapper {
+
+    display: flex;
+    flex-direction: column;
+
+    app-header-toolbar {
+
+        flex: 0 0 100px;
+
+    }
+
+    .slim-header {
+
+        flex: 0 0 100px;
+
+    }
+
+    .slim-mainpanel {
+
+        position: absolute;
+        top: 180px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        flex: 1;
+        display: flex;
+        overflow: auto;
+
+    }
+
+}
+
