@@ -1,9 +1,17 @@
-FROM node:8
 
-COPY dist /dist
-COPY server.js /server.js
-COPY package-express.json /package.json
+FROM node:10 AS builder
+
+WORKDIR /app
+COPY . /app
 
 RUN npm install
+RUN npm run build
 
-CMD [ "node", "server.js" ]
+FROM nginx:alpine
+
+WORKDIR /usr/share/nginx/html
+
+COPY --from=builder /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+EXPOSE 80
